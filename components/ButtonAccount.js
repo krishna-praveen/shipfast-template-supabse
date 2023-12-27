@@ -27,8 +27,8 @@ const ButtonAccount = () => {
     getUser();
   }, [supabase]);
 
-  const handleSignOut = () => {
-    supabase.auth.signOut();
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
     window.location.href = "/";
   };
 
