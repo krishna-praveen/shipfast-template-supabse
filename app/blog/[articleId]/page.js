@@ -124,7 +124,7 @@ export default async function Article({ params }) {
             {article.description}
           </p>
         </section>
-
+        
         <div className="flex flex-col md:flex-row">
           {/* SIDEBAR WITH AUTHORS AND 3 RELATED ARTICLES */}
           <section className="max-md:pb-4 md:pl-12 max-md:border-b md:border-l md:order-last md:w-72 shrink-0 border-base-content/10">

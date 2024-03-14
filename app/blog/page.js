@@ -26,7 +26,6 @@ export default async function Blog() {
           updates about the boilerplate
         </p>
       </section>
-
       <section className="grid lg:grid-cols-2 mb-24 md:mb-32 gap-8">
         {articlesToDisplay.map((article, i) => (
           <CardArticle
