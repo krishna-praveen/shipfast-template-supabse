@@ -33,21 +33,17 @@ const userSurvey = () => {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Option 1</th>
-                <th>Option 2</th>
-                <th>Option 3</th>
-                <th>Option 4</th>
+                <th>Most Voted Option</th>
+                <th>Number of Votes</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.title}</td>
-                  <td>{item.option_1}</td>
-                  <td>{item.option_2}</td>
-                  <td>{item.option_3}</td>
-                  <td>{item.option_4}</td>
+                  <td>{item.survey_title}</td>
+                  <td>{item.survey_max_option_name}</td>
+                  <td>{item.survey_max_option}</td>
                   <td><button onClick={ ()=>deleteSurvey(item.id)}>Delete</button></td>
                 </tr>
               ))}
