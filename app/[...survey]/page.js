@@ -1,8 +1,10 @@
 'use client';
 import React, { useState,useEffect } from 'react';
+import { useRouter } from 'next/navigation'
 import axios from 'axios';
 export default function Page({ params }) {
     const { survey } = params;
+    const router = useRouter()
     const id = survey[1]
     const [data,setData] = useState([]);
     const fetchData = async () => {
@@ -22,7 +24,15 @@ export default function Page({ params }) {
         fetchData();
       }, []);
 
-      console.log(data)
+      const voteSurvey = async (id) => {
+        try {
+          const response = await axios.post('/api/public/votePublic', {params: {id}});
+          router.push('/thankyou');
+          fetchData();
+        } catch (error) {
+          console.error(error);
+        }
+      }
 
       return(
         <div className='flex flex-col items-center justify-center min-h-screen'>
@@ -39,22 +49,22 @@ export default function Page({ params }) {
               <tbody>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={index}>{item.option_1}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_1,"survey_id":id})}>{item.option_1}</td>
                   ))}
                 </tr>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={index}>{item.option_2}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_2,"survey_id":id})}>{item.option_2}</td>
                   ))}
                 </tr>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={index}>{item.option_3}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_3,"survey_id":id})}>{item.option_3}</td>
                   ))}
                 </tr>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={index}>{item.option_4}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_4,"survey_id":id})}>{item.option_4}</td>
                   ))}
                 </tr>
               </tbody>

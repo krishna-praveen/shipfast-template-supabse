@@ -26,10 +26,9 @@ const OptionComponent = ({ items }) => {
         try {
             
             const response = await axios.post('/api/user/createSurvey', values);
-            console.log(response);
+            const survey_data =  response.data.survey_data;
             const surveyId = response.data.data[0].id;
             const baseUrl = window.location.origin;
-            console.log(baseUrl);
             setSurveyLink(`${baseUrl}/survey/${surveyId}`);
             setValues(initialState);
         } catch (error) {

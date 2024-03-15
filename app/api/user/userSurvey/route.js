@@ -14,7 +14,6 @@ export async function GET() {
     const data = await supabase.from('user_created_polls').select().eq('user_id', session.user.id);
 
     const result = data.data
-    console.log(result)
     return NextResponse.json({ "data": result}, { status: 200 });
 }
 }

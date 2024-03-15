@@ -7,7 +7,6 @@ const userSurvey = () => {
     const [data,setData] = useState([]);
     const fetchData = async () => {
         const result = await axios('/api/user/userSurvey');
-        
         // Check if result.data is an array
         if (Array.isArray(result.data.data)) {
           setData(result.data.data);
@@ -20,10 +19,8 @@ const userSurvey = () => {
         fetchData();
       }, []);
     const deleteSurvey = async (id) => {
-        console.log(id);
         try {
           const response = await axios.post('/api/user/deleteSurvey', {id});
-          console.log(response);
           fetchData();
         } catch (error) {
           console.error(error);

@@ -24,10 +24,14 @@ export async function POST(req) {
 
     body.user_id = session.user.id;
     const {data,error} = await supabase.from('user_created_polls').insert(body).select('*');
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+    const surveyBody={
+      "survey_id": data[0].id,
+      "option_1":0,
+      "option_2":0,
+      "option_3":0,
+      "option_4":0
     }
-
-    return NextResponse.json({ data: data }, { status: 200 });
+    const {survey_data,survey_error} = await supabase.from('public_survey').insert(surveyBody).select('*');
+    return NextResponse.json({ data: data,survey_data:surveyBody }, { status: 200 });
   }
 }
