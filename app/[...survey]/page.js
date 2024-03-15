@@ -49,22 +49,22 @@ export default function Page({ params }) {
               <tbody>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_1,"survey_id":id})}>{item.option_1}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":"option_1","survey_id":id})}>{item.option_1}</td>
                   ))}
                 </tr>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_2,"survey_id":id})}>{item.option_2}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":"option_2","survey_id":id})}>{item.option_2}</td>
                   ))}
                 </tr>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_3,"survey_id":id})}>{item.option_3}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":"option_3","survey_id":id})}>{item.option_3}</td>
                   ))}
                 </tr>
                 <tr>
                   {data.map((item, index) => (
-                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":item.option_4,"survey_id":id})}>{item.option_4}</td>
+                    <td className='bg-base-200' key={item.id} onClick={() => voteSurvey({"user_selected":"option_4","survey_id":id})}>{item.option_4}</td>
                   ))}
                 </tr>
               </tbody>

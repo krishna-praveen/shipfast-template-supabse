@@ -1,4 +1,4 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
@@ -6,14 +6,16 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req) {
     const body = await req.json();
+    console.log(body);
     const option = body.params.id;
-    const supabase = createRouteHandlerClient({ cookies });
-
+    const supabase = createClientComponentClient();
 
 
     if (option) {
+        
         const vote = parseInt(option.user_selected.match(/\d+/g)[0]);
         const survey_id = option.survey_id;
+        console.log(vote);
         if (vote === 1){
             const getOption1 = await supabase.from('public_survey').select('option_1').eq('survey_id', survey_id);
             const userVote = getOption1.data[0].option_1+1;
