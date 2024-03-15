@@ -9,10 +9,6 @@ import logo from "@/app/icon.png";
 import config from "@/config";
 
 const links = [
-  {
-    href: "/#faq",
-    label: "FAQ",
-  },
 ];
 
 const cta = <ButtonSignin extraStyle="btn-primary" />;

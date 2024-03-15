@@ -4,6 +4,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
 const userSurvey = () => {
+    const baseUrl = window.location.origin;
     const [data,setData] = useState([]);
     const fetchData = async () => {
         const result = await axios('/api/user/userSurvey');
@@ -41,7 +42,7 @@ const userSurvey = () => {
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.survey_title}</td>
+                  <td><a href={`${baseUrl}/survey/${item.id}`}>{item.survey_title} </a></td>
                   <td>{item.survey_max_option_name}</td>
                   <td>{item.survey_max_option}</td>
                   <td><button onClick={ ()=>deleteSurvey(item.id)}>Delete</button></td>
